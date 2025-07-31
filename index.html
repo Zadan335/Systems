@@ -1,46 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>My First Web Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding-top: 50px;
-            background-color: #f4f4f4;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My First Web Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
 
-        h1 {
-            color: #333;
-        }
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+    }
 
-        p {
-            font-size: 18px;
-            color: #555;
-        }
+    p {
+      font-size: 18px;
+      color: #555;
+    }
 
-        .signup-btn {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #007BFF;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .signup-btn:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    .signup-btn {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 16px;
+      background-color: #007BFF;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .signup-btn:hover {
+      background-color: #0056b3;
+    }
+
+    /* Modal Styling */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+      background-color: white;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      text-align: left;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+    }
+
+    .modal-content input {
+      width: 100%;
+      padding: 8px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .modal-content button {
+      width: 100%;
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .modal-content button:hover {
+      background-color: #218838;
+    }
+
+    .close {
+      float: right;
+      font-size: 22px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: black;
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to My Website</h1>
-    <p>This is a basic HTML page with a styled Sign Up button.</p>
+  <h1>Welcome to My Website</h1>
+  <p>This is a basic HTML page with a styled Sign Up button.</p>
 
-    <!-- Sign Up Button -->
-    <button class="signup-btn" onclick="alert('Sign Up clicked!')">Sign Up</button>
+  <!-- Sign Up Button -->
+  <button class="signup-btn" onclick="document.getElementById('signupModal').style.display='block'">Sign Up</button>
+
+  <!-- Sign Up Modal -->
+  <div id="signupModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('signupModal').style.display='none'">&times;</span>
+      <h2>Sign Up</h2>
+      <input type="text" placeholder="Full Name" />
+      <input type="email" placeholder="Email Address" />
+      <input type="password" placeholder="Password" />
+      <button onclick="alert('Signed up successfully!')">Submit</button>
+    </div>
+  </div>
+
+  <!-- Optional JavaScript to close modal if clicked outside -->
+  <script>
+    window.onclick = function(event) {
+      const modal = document.getElementById('signupModal');
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
 </body>
 </html>
